@@ -1,0 +1,24 @@
+{
+  "name": "liquidflame.github.io",
+  "version": "1.0.0",
+  "description": "[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp; [![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiquidFlame/liquidflame.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiquidFlame/liquidflame.github.io/issues"
+  },
+  "homepage": "https://github.com/LiquidFlame/liquidflame.github.io#readme",
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.9.4",
+    "prettier": "^3.6.2"
+  }
+}

@@ -1,0 +1,118 @@
+@use 'sass:color';
+
+/* Hacker theme palette */
+$hacker-bg: #151515; // background
+$hacker-text: #eaeaea; // main text
+$hacker-accent: #b5e853; // neon green
+$hacker-muted: #aaa; // secondary text
+$hacker-muted2: #666; // subtle borders
+$hacker-link: #63c0f5; // link blue
+
+/* Base */
+html,
+body {
+  background-color: $hacker-bg;
+  color: $hacker-text;
+}
+a,
+a:visited {
+  color: $hacker-link;
+}
+a:hover {
+  color: color.adjust($hacker-link, $lightness: 8%);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $hacker-accent;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px rgba(181, 232, 83, 0.15);
+}
+
+/* Rules & tables */
+hr {
+  border: 0;
+  border-bottom: 1px dashed $hacker-accent;
+}
+table {
+  color: $hacker-text;
+}
+th {
+  border-bottom: 1px dashed $hacker-accent;
+}
+td,
+th {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Blockquotes */
+blockquote {
+  color: $hacker-muted;
+  border-left: 1px dotted $hacker-muted2;
+}
+
+/* Code */
+pre,
+.highlight {
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: $hacker-accent;
+  border-radius: 2px;
+}
+code,
+code.highlighter-rouge,
+.post-content code {
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #aa759f; /* inline code accent */
+  border-radius: 2px;
+}
+
+/* Chirpy surfaces */
+.sidebar {
+  background: color.mix($hacker-bg, #000, $weight: 90%);
+}
+.sidebar .site-title,
+.sidebar .site-title a {
+  color: $hacker-accent;
+}
+.topbar,
+.navbar {
+  background: color.mix($hacker-bg, #000, $weight: 92%);
+}
+.footer {
+  color: $hacker-muted;
+}
+
+/* TOC & misc */
+.toc .nav-link {
+  color: $hacker-link;
+}
+.toc .nav-link.active {
+  color: $hacker-accent;
+}
+
+.btn,
+.pagination .page-item .page-link {
+  border-color: $hacker-accent;
+  color: $hacker-text;
+  background: transparent;
+}
+.btn:hover,
+.pagination .page-item .page-link:hover {
+  color: $hacker-bg;
+  background: $hacker-accent;
+}
+
+.tags .tag {
+  border-color: $hacker-accent;
+  color: $hacker-accent;
+}
+.tags .tag:hover {
+  background: $hacker-accent;
+  color: $hacker-bg;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Jekyll",
+  "image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye",
+  "features": { "ghcr.io/devcontainers/features/node:1": { "version": "20" } },
+  "onCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "containerEnv": {
+    "VISUAL": "code -r",
+    "EDITOR": "code -r"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          // Make integrated terminals interactive (non-login) so they read ~/.bashrc
+          "bash": { "path": "/bin/bash", "args": ["-i"] },
+          "zsh": { "path": "/usr/bin/zsh" }
+        }
+      },
+      "extensions": [
+        "killalau.vscode-liquid-snippets",
+        "Shopify.theme-check-vscode",
+        "timonwong.shellcheck",
+        "mkhl.shfmt",
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint",
+        "yzhang.markdown-all-in-one",
+        "mhutchie.git-graph"
+      ]
+    }
+  }
+}

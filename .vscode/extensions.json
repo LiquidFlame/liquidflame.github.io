@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "ms-vscode-remote.remote-containers",
+    "redhat.vscode-yaml",
+    "streetsidesoftware.code-spell-checker",
+    "christian-kohler.path-intellisense",
+    "usernamehw.errorlens",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "shopify.theme-check-vscode",
+    "shopify.ruby-lsp",
+    "timonwong.shellcheck",
+    "mkhl.shfmt",
+    "yzhang.markdown-all-in-one",
+    "mhutchie.git-graph",
+    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint"
+  ]
+}

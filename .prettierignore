@@ -1,0 +1,11 @@
+# Jekyll build artifacts
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Generated/static files you don't want formatted
+assets/img/favicons/site.webmanifest
