@@ -6,6 +6,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://LiquidFlame.github.io',
+	base: '/liquidflame_blog',
 	integrations: [mdx(), sitemap()],
 });
