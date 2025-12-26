@@ -1,5 +1,4 @@
 ---
-import AboutHeroImage from "../assets/blog-placeholder-about.jpg";
 import Layout from "../layouts/BlogPost.astro";
 ---
 
@@ -7,12 +6,20 @@ import Layout from "../layouts/BlogPost.astro";
   title="About Me"
   description="Interested in hacking, info sec, nerd stuff."
   pubDate={new Date()}
-  heroImage={AboutHeroImage}
 >
   <p>
     I'm interested in hacking, info sec, and general nerd stuff. This site is
     where I blog, keep writeups, notes, and projects as I learn and build.
-
-    <p class="tagline">“My voice is my passport. Verify me.”</p>
   </p>
+
+  <p class="tagline">“My voice is my passport. Verify me.”</p>
+
+  <style>
+    .tagline {
+      margin-top: 1.5rem;
+      font-style: italic;
+      opacity: 0.8;
+      text-align: center;
+    }
+  </style>
 </Layout>
