@@ -6,7 +6,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('blog', ({ data }) => {
+	// If the site is built for production, hide drafts.
+	// Locally, you'll still see them so you can keep editing.
+	return import.meta.env.PROD ? data.draft !== true : true;
+})).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
