@@ -1,0 +1,15 @@
+---
+title: 'My Journey with Pwnagotchi'
+description: 'asdfasdfasdfasdfadfa'
+pubDate: '2026-02-12'
+---
+
+# Hello World
+
+This is my first post on the LiquidFlame blog.
+
+## My Setup
+I am currently running:
+- Astro v5
+- A custom 4090 rig
+- Kali Linux
