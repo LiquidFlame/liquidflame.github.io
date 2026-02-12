@@ -4,6 +4,6 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
 	site: 'https://liquidflame.github.io',
-	base: '/', // This must be '/' if your URL doesn't have a subfolder
+	base: '/',
 	integrations: [mdx(), sitemap()],
 });
