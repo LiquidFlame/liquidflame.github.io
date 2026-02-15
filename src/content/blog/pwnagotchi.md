@@ -36,4 +36,5 @@ Before connecting the Pwnagotchi to your computer, you need to install the [RNDI
 
 ## Connecting the Pwnagotchi
 - Open Device Manager and Network Connections, this will make it easier to know when the Pwnagotchi has connected to our computer and is ready to communicate.
-- Plug the USB-A to Micro USB data cable into the micro usb port closet to the HDMI port. Once you do thise
+- Plug the USB-A to Micro USB data cable into the micro usb port closet to the HDMI port. Once you do this you will see in your Device Manager, **Unknown USB Device (Device Descriptor Request Failed)** under Universal Serial Bus controllers.
+![Device Manager - Unknown](../../assets/pwnagotchi/device-manager-unknown.png)
