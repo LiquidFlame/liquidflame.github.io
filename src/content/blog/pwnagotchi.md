@@ -40,5 +40,14 @@ Before connecting the Pwnagotchi to your computer, you need to install the [RNDI
 ![Device Manager - Unknown](../../assets/pwnagotchi/device-manager-unknown.png)
 - **⚠️ CRITICAL STEP:** Leave the Pwnagotchi alone for 10 minutes. It's going to look like nothing is happening, and the Waveshare screen may flash and restart, but the Pwnagotchi takes awhile for it to initially setup and connect to the computer. I'm not joking, go get a drink, browse your phone, whatever just leave the Pwnagotchi alone.
   - During this time, the Pwnagotchi is generating its RSA cryptographic keys. This requires 'entropy' (randomness), and since the Pi Zero is small, it takes a while to gather enough random data to create secure keys. If you unplug it now, you might end up with half-generated keys or a corrupted file system.
-- Once the Pwnagotchi is done setting up, the **Unknown USB Device (Device Descriptor Request Failed)** will disappear and you should then see a new **Raspberry Pi USB Remote NDIS Network Device** under Network adapters
-![Device Manager - Raspberry](../../assets/pwnagotchi/device-manger-rpi.png.png)
+- Once the Pwnagotchi is done setting up, the **Unknown USB Device (Device Descriptor Request Failed)** under Universal Serial Bus controllers will disappear and you should then see a new **Raspberry Pi USB Remote NDIS Network Device** under Network adapters.
+![Device Manager - Raspberry](../../assets/pwnagotchi/device-manger-rpi.png)
+- You should also see a new network connection.
+![Network Connections - New](../../assets/pwnagotchi/network-conn.png)
+- Now you can SSH into the Pwnagotchi to configure it.
+  - Using your preferred terminal, type ```ssh pi@pwnagotchi.local```
+  - Confirm the security message by typing ```yes```, and then enter the default password ```raspberry```
+![SSH - Connection](../../assets/pwnagotchi/ssh.png)
+  - Now you should be connected to the Pwnagotchi and can continue onto configuring it.
+
+## Configuring the Pwnagotchi
