@@ -9,21 +9,32 @@ import HeaderLink from "./HeaderLink.astro";
     <div class="internal-links">
       <HeaderLink href={`${import.meta.env.BASE_URL}`}>Blog</HeaderLink>
       <HeaderLink href={`${import.meta.env.BASE_URL}about/`}>About</HeaderLink>
+      
+      <a href={`${import.meta.env.BASE_URL}search/`} class="icon-btn" aria-label="Search Blog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </a>
+
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+
     </div>
   </nav>
 </header>
+
 <style>
   header {
     margin: 0;
     padding: 0 1em;
-    background: white;
-    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+    background: var(--bg-color, white); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.1s ease;
   }
   h2 {
     margin: 0;
     font-size: 1em;
   }
-
   h2 a,
   h2 a.active {
     text-decoration: none;
@@ -33,9 +44,14 @@ import HeaderLink from "./HeaderLink.astro";
     align-items: center;
     justify-content: space-between;
   }
+  .internal-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
   nav a {
     padding: 1em 0.5em;
-    color: var(--black);
+    color: rgb(var(--black));
     border-bottom: 4px solid transparent;
     text-decoration: none;
   }
@@ -43,4 +59,51 @@ import HeaderLink from "./HeaderLink.astro";
     text-decoration: none;
     border-bottom-color: var(--accent);
   }
+
+  /* Shared Icon Button Styles */
+  .internal-links .icon-btn {
+    background: transparent;
+    border: none;
+    color: rgb(var(--black));
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, color 0.3s ease;
+    margin-left: 0.25rem;
+  }
+  .internal-links a.icon-btn {
+    border-bottom: none; /* Prevents the nav link underline from showing up */
+  }
+  .internal-links .icon-btn:hover {
+    transform: scale(1.1);
+    color: var(--accent);
+  }
+
+  /* Dark Mode Adjustments */
+  :global(html.dark) header {
+    box-shadow: none; 
+    border-bottom: 1px solid var(--border-color); 
+  }
+  
+  /* Icon Swapping Logic */
+  :global(html.dark) .moon-icon { display: none; }
+  :global(html.dark) .sun-icon { display: block; }
+  :global(html:not(.dark)) .moon-icon { display: block; }
+  :global(html:not(.dark)) .sun-icon { display: none; }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    }
+  });
+</script>

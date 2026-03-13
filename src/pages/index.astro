@@ -26,6 +26,22 @@ const AVATAR_SRC = `${BASE}avatar.png`;
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
+			.index-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.4rem;
+				margin-top: 0.5rem;
+			}
+			.index-tag-pill {
+				display: inline-block;
+				padding: 0.2em 0.6em;
+				font-size: 0.75rem;
+				font-weight: 600;
+				color: #0056b3; 
+				background-color: #e6f2ff; 
+				border: 1px solid #b3d7ff; 
+				border-radius: 999px;
+			}
 			.hero {
 				display: flex;
 				align-items: center;
@@ -50,7 +66,15 @@ const AVATAR_SRC = `${BASE}avatar.png`;
 				font-style: italic;
 				color: rgb(var(--gray));
 			}
-
+			/* Fixes the vertical alignment next to the avatar */
+			.hero h1 {
+				margin: 0;
+				line-height: 1.1;
+			}
+			.hero .tagline {
+				margin-top: 0.5rem; /* Adds a precise gap between title and tagline */
+				margin-bottom: 0;
+			}
 			/* Horizontal List Styles */
 			ul {
 				display: flex;
@@ -122,23 +146,31 @@ const AVATAR_SRC = `${BASE}avatar.png`;
 			<section>
 				<ul>
 					{
-					posts.map((post) => (
+						posts.map((post) => (
 						<li>
-						<a href={`${BASE}${post.id}/`}>
+							<a href={`${BASE}${post.id}/`}>
 							<img 
-							src={typeof post.data.heroImage === 'string' ? post.data.heroImage : post.data.heroImage?.src || '/placeholder.jpg'} 
-							alt="" 
+								src={typeof post.data.heroImage === 'string' ? post.data.heroImage : post.data.heroImage?.src || '/placeholder.jpg'} 
+								alt="" 
 							/>
 							<div class="post-content">
-							<h4 class="title">{post.data.title}</h4>
-							{post.data.description && <p class="description">{post.data.description}</p>}
-							<p class="date">
+								<h4 class="title">{post.data.title}</h4>
+								{post.data.description && <p class="description">{post.data.description}</p>}
+								
+								{post.data.tags && post.data.tags.length > 0 && (
+								<div class="index-tags">
+									{post.data.tags.map((tag) => (
+									<span class="index-tag-pill">#{tag}</span>
+									))}
+								</div>
+								)}
+								<p class="date">
 								<FormattedDate date={post.data.pubDate} />
-							</p>
+								</p>
 							</div>
-						</a>
+							</a>
 						</li>
-					))
+						))
 					}
 				</ul>
 			</section>
