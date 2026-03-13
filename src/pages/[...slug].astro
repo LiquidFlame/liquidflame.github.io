@@ -12,9 +12,88 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { Content } = await render(post);
+const { Content, headings} = await render(post);
 ---
 
 <BlogPost {...post.data}>
-  <Content />
+  <div class="article-container">
+    <article class="main-content">
+      <Content />
+    </article>
+    <aside class="toc-sidebar">
+      <h3>Table of Contents</h3>
+      <ul>
+        {headings.map((heading) => (
+          <li class={`depth-${heading.depth}`}>
+            <a href={`#${heading.slug}`}>{heading.text}</a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </div>
 </BlogPost>
+
+<style>
+  /* Override the default Astro template width and CENTER it */
+  :global(main), :global(.prose), :global(article) {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 0 auto !important; /* This is the magic centering line */
+  }
+  /* Creates a two-column layout */
+  .article-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+  .main-content {
+    flex: 1;
+    min-width: 0; /* Prevents long lines of code from breaking the layout */
+    max-width: 800px; /* Keeps reading lines at a comfortable length */
+  }
+  /* The Sticky Right Sidebar */
+  .toc-sidebar {
+    width: 250px;
+    position: sticky;
+    top: 2rem; 
+    padding: 1.5rem;
+    background: #f8f9fa; /* Subtle light gray box */
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+  }
+  .toc-sidebar h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+  }
+  .toc-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .toc-sidebar li {
+    margin-bottom: 0.5rem;
+  }
+  .toc-sidebar a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s;
+  }
+  .toc-sidebar a:hover {
+    color: #007bff; /* A nice blue hover effect */
+  }
+  /* Indent sub-headings (## vs #) */
+  /* Styling for Table of Contents hierarchy */
+  .depth-1 { font-weight: bold; margin-bottom: 0.5rem; }
+  .depth-2 { margin-left: 1rem; font-weight: normal; }
+  .depth-3 { margin-left: 2rem; font-size: 0.9em; color: #555; }
+
+  /* Hide ToC on mobile screens so it doesn't squish the text */
+  @media (max-width: 768px) {
+    .article-container { flex-direction: column; }
+    .toc-sidebar { display: none; } 
+  }
+</style>

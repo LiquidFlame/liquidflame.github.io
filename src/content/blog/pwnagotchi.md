@@ -4,6 +4,7 @@ description: "A mischievous device you don't want to shake hands with"
 pubDate: "2026-02-12"
 draft: true
 heroImage: "../../assets/pwnagotchi/In_the_wild.jpg"
+tags: ["wi-fi", "hardware", "raspberry-pi", "pwnagotchi", "cybersecurity"]
 ---
 
 This innocent looking little fella is actually quite mischievous. Let me introduce you to the Pwnagotchi. The Pwnagotchi is an open-source project designed to capture WPA/WPA2 handshakes from surrounding Wi-Fi networks. In short the Pwnagotchi is able to trick your devices into thinking they’ve been kicked off the Wi-Fi. When your device automatically scrambles to reconnect, the Pwnagotchi is waiting to record the 'secret handshake' they use to get back in.
@@ -92,9 +93,10 @@ As of this writing, I am using Linux Mint. While in theory, you should just be a
 ---
 So your Pwnagotchi has been out for a walk, and it has successfully captured some handshakes. Now what? Right now, those handshakes are just sitting on the microSD card doing absolutely nothing. We need to extract them. The Pwnagotchi saves these captures as `.pcap` (Packet Capture) files. Here is how to get them off the device and onto your main computer:
 
-We can use **Secure Copy Protocol (SCP)** from our computer's terminal to retrieve the handshakes. Use the following command to copy the handshake files `scp pi@YOUR_PI_NAME:/home/pi/*.pcap ~/DESTINATION_TO_COPY_DATA/`
+We can use **Secure Copy Protocol (SCP)** from our computer's terminal to retrieve the handshakes. Use the following command to copy the handshake files `scp pi@YOUR_PI_NAME:/home/pi/*.pcap ~/DESTINATION/`
 
 # What's Next?
+---
 Congratulations, you now possess the encrypted handshakes. In my next post, I will show you how to take these `.pcap` files, convert them into a crackable hash format, and feed them to Hashcat. We'll fire up a high-end GPU and see exactly how fast a dictionary attack can chew through a weak password!
 
 # Resources

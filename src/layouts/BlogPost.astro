@@ -19,7 +19,12 @@ const {
   updatedDate,
   heroImage,
   showDate = true,
+  tags = [], 
 } = Astro.props as Props;
+
+const BASE = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
 ---
 
 <html lang="en">
@@ -63,6 +68,32 @@ const {
       .last-updated-on {
         font-style: italic;
       }
+      /* Tag Pill Styling */
+      .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center; /* Centers the tags under the title */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      .tag-pill {
+        display: inline-block;
+        padding: 0.4em 1em;
+        font-size: 0.85em;
+        font-weight: 600;
+        color: #0056b3; /* Dark blue text */
+        background-color: #e6f2ff; /* Very light blue background */
+        border: 1px solid #b3d7ff; /* Medium blue border */
+        border-radius: 999px; /* This makes it a pill shape */
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+      .tag-pill:hover {
+        background-color: #0056b3;
+        color: #ffffff;
+        transform: translateY(-2px); 
+      }
     </style>
   </head>
 
@@ -92,6 +123,16 @@ const {
               )
             }
             <h1>{title}</h1>
+            
+            {tags && tags.length > 0 && (
+              <div class="tags-container">
+                {tags.map((tag) => (
+                  <a class="tag-pill" href={`${BASE}tags/${tag}`}>
+                    #{tag}
+                  </a>
+                ))}
+              </div>
+            )}
             <hr />
           </div>
           <slot />
