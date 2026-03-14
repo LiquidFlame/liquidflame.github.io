@@ -1,12 +1,22 @@
 ---
 const today = new Date();
+
+// Grab the current URL path
+const currentPath = Astro.url.pathname;
+
+// Check if the path is the about page (handles both with and without a trailing slash)
+const isAboutPage = currentPath === '/about' || currentPath === '/about/';
 ---
 
 <footer>
+  {isAboutPage && (
+    <div class="contact-footer">
+      <strong>Contact:</strong> <a href="mailto:ridge.valley5992@eagereverest.com">ridge.valley5992@eagereverest.com</a>
+    </div>
+  )}
+
   <p>&copy; {today.getFullYear()} LiquidFlame. All rights reserved.</p>
-  <p class="disclosure">
-    As an Amazon Associate I earn from qualifying purchases.
-  </p>
+  <p class="amazon-disclaimer">As an Amazon Associate I earn from qualifying purchases.</p>
 </footer>
 
 <style>
@@ -34,5 +44,10 @@ const today = new Date();
   }
   .social-links a:hover {
     color: rgb(var(--gray-dark));
+  }
+  .contact-footer {
+    text-align: center;
+    margin-bottom: 1.5rem; /* Adds space between the email and the copyright */
+    font-size: 0.95em; /* Optional: makes it slightly smaller to match the footer vibe */
   }
 </style>

@@ -1,8 +1,8 @@
 ---
 title: "There and Back Again: A Pwnagotchi Tale"
 description: "A mischievous device you don't want to shake hands with"
-pubDate: "2026-02-12"
-draft: true
+pubDate: "2026-03-14"
+draft: false
 heroImage: "../../assets/pwnagotchi/In_the_wild.jpg"
 tags: ["wi-fi", "hardware", "raspberry-pi", "pwnagotchi", "cybersecurity"]
 ---
