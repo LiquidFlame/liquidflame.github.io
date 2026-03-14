@@ -1,14 +1,17 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import PagefindSearch from 'astro-pagefind/components/Search';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import PagefindSearch from "astro-pagefind/components/Search";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title="Search | LiquidFlame's Blog" description="Search the blog" />
+    <BaseHead
+      title="Search | LiquidFlame's Blog"
+      description="Search the blog"
+    />
     <style>
       /* This maps Pagefind's colors to your custom Dark/Light mode variables! */
       :global(:root) {
@@ -20,7 +23,7 @@ import PagefindSearch from 'astro-pagefind/components/Search';
         --pagefind-ui-border-radius: 8px;
         --pagefind-ui-font: "Atkinson", sans-serif;
       }
-      
+
       .search-container {
         margin-top: 2rem;
         margin-bottom: 4rem;
@@ -32,9 +35,12 @@ import PagefindSearch from 'astro-pagefind/components/Search';
     <main>
       <section class="search-container">
         <h1 style="margin-bottom: 2rem;">Search</h1>
-        
-        <PagefindSearch id="search" className="pagefind-ui" uiOptions={{ showImages: true }} />
-        
+
+        <PagefindSearch
+          id="search"
+          className="pagefind-ui"
+          uiOptions={{ showImages: true }}
+        />
       </section>
     </main>
     <Footer />
